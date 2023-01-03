@@ -2,14 +2,10 @@ package com.project.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import androidx.appcompat.widget.AppCompatCheckedTextView
 import com.project.calculator.databinding.ActivityMainBinding
-import net.objecthunter.exp4j.Expression
-import net.objecthunter.exp4j.ExpressionBuilder
-import java.lang.ArithmeticException
+
 
 class MainActivity : AppCompatActivity() {
 
