@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     *  Action taking place when a number is entered
+     */
+
     fun numberAction(view: View) {
 
         if (view is Button) {
@@ -38,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Action taking place when a operator is entered
+     */
+
     fun operatorAction (view:View) {
 
         if(view is Button && canAddOperation) {
@@ -48,6 +56,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     *  Action taking place when a allClear is used
+     */
+
     fun allClearAction(view: View) {
 
         binding.calculatingArea.text=""
@@ -57,6 +69,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     *  Action taking place when a backSpace is used
+     */
+
     fun backspaceAction(view: View) {
 
         val length = binding.calculatingArea.length()
@@ -64,6 +80,11 @@ class MainActivity : AppCompatActivity() {
             binding.calculatingArea.text = binding.calculatingArea.text.subSequence(0,length-1)
         }
     }
+
+    /**
+     *  Action taking place when a equal to operator is used.
+     *  It is used to calculate the result
+     */
 
     fun equalAction(view : View) {
 
@@ -128,6 +149,7 @@ class MainActivity : AppCompatActivity() {
         return list
     }
 
+
     private fun calcTimesDiv(passedList : MutableList<Any>): MutableList<Any> {
 
         val newList = mutableListOf<Any>()
@@ -178,72 +200,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun digitOperators() : MutableList<Any> {
-//
-//        val list = mutableListOf<Any>()
-//
-//        var currDigit = ""
-//
-//        for(character in binding.calculatingArea.text ) {
-//
-//            if(character.isDigit() || character == '.') {
-//
-//                currDigit += character
-//
-//            } else {
-//                list.add(currDigit.toFloat())
-//                currDigit = ""
-//                list.add(character)
-//            }
-//        }
-//
-//        if(currDigit != "") {
-//
-//            list.add(currDigit.toFloat())
-//
-//        }
-//
-//        return list
-//     }
-
-
-//    private fun calcTimesDiv(passedList : MutableList<Any>): MutableList<Any> {
-//
-//        val newList = mutableListOf<Any>()
-//
-//        for(i in passedList.indices) {
-//
-//            if(passedList[i] is Char && i != passedList.lastIndex) {
-//
-//                val operator = passedList[i]
-//                val prevDigit = passedList[i-1] as Float
-//                val nextDigit = passedList[i+1 ] as Float
-//
-//                when(operator) {
-//
-//                    'X' -> {
-//                        newList.add(prevDigit * nextDigit)
-//                        newList.addAll(passedList.subList(i+2, passedList.size))
-//                        return newList
-//                    }
-//                    '/' -> {
-//                        newList.add(prevDigit / nextDigit)
-//                        newList.addAll(passedList.subList(i+2, passedList.size))
-//                        return newList
-//                    }
-//                    '%' -> {
-//                        newList.add(prevDigit % nextDigit)
-//                        newList.addAll(passedList.subList(i+2, passedList.size))
-//                        return newList
-//                    }
-//                }
-//            } else {
-//                newList.add(passedList[i])
-//            }
-//        }
-//        return newList
-//    }
-
     private fun digitOperators(): MutableList<Any> {
 
         val digits = mutableListOf<Any>()
@@ -256,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
             if (currentChar.isDigit()) {
 
-                // Extract the whole number
+                // Extracting  the whole number
 
                 val number = StringBuilder()
                 while (index < expression.length && expression[index].isDigit()) {
@@ -270,7 +226,7 @@ class MainActivity : AppCompatActivity() {
 
             } else if (currentChar == '.') {
 
-                // Extract the decimal number
+                // Extracting the decimal number
 
                 val number = StringBuilder()
                 while (index < expression.length && (expression[index].isDigit() || expression[index] == '.')) {
@@ -284,7 +240,7 @@ class MainActivity : AppCompatActivity() {
 
             } else if (currentChar == '-' && index == 0) {
 
-                // Handle negative numbers
+                // Checking if there is a negative numbers
 
                 val number = StringBuilder()
                 number.append(currentChar)
@@ -300,7 +256,7 @@ class MainActivity : AppCompatActivity() {
 
             } else {
 
-                // Add operator to the list
+                // Adding operator to the list
 
                 digits.add(currentChar)
                 index++
@@ -309,6 +265,5 @@ class MainActivity : AppCompatActivity() {
         }
         return digits
     }
-
 
 }
